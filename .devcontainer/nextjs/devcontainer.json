@@ -1,0 +1,46 @@
+{
+  "name": "Next.js",
+  
+  // Using docker-compose for dev container + optional databases
+  "dockerComposeFile": [
+    "docker-compose.yml"
+    // Uncomment to add services (see .devcontainer/compose/README.md):
+    // ,"../compose/sqlserver.compose.yml"
+    // ,"../compose/postgres.compose.yml"
+    // ,"../compose/mongo.compose.yml"
+    // ,"../compose/redis.compose.yml"
+    // ,"../compose/rabbitmq.compose.yml"
+  ],
+  "service": "devcontainer",
+  "workspaceFolder": "/workspace",
+  
+  "features": {
+    "ghcr.io/devcontainers-extra/features/pnpm:2": {
+      "version": "10.28.0"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // JavaScript/TypeScript
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-next",
+        "yoavbls.pretty-ts-errors",
+        
+        // React/Frontend
+        "bradlc.vscode-tailwindcss",
+        "dsznajder.es7-react-js-snippets",
+        "pranaygp.vscode-css-peek",
+        "vincaslt.highlight-matching-tag",
+        "jock.svg",
+        
+        // Documentation & Utilities
+        "bierner.markdown-mermaid",
+        "yzhang.markdown-all-in-one",
+        "mikestead.dotenv",
+        "streetsidesoftware.code-spell-checker"
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+services:
+  devcontainer:
+    image: mcr.microsoft.com/devcontainers/javascript-node:22-bookworm
+    
+    volumes:
+      - ../..:/workspace:cached
+    
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+    
+    # Uncomment service dependencies as you add them to dockerComposeFile
+    # depends_on:
+    #   sqlserver:
+    #     condition: service_healthy
+    #   postgres:
+    #     condition: service_healthy
+    #   mongo:
+    #     condition: service_healthy
+    #   redis:
+    #     condition: service_healthy
+    #   rabbitmq:
+    #     condition: service_healthy
