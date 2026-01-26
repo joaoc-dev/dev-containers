@@ -1,0 +1,37 @@
+{
+  "name": "Minimal Base",
+  
+  // Using docker-compose for dev container + optional databases
+  "dockerComposeFile": [
+    "docker-compose.yml"
+    // Uncomment to add services (see .devcontainer/compose/README.md):
+    // ,"../compose/sqlserver.compose.yml"
+    // ,"../compose/postgres.compose.yml"
+    // ,"../compose/mongo.compose.yml"
+    // ,"../compose/redis.compose.yml"
+    // ,"../compose/rabbitmq.compose.yml"
+  ],
+  "service": "devcontainer",
+  "workspaceFolder": "/workspace",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "moby": false,
+      "dockerDashComposeVersion": "v2"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // Docker
+        "ms-azuretools.vscode-docker",
+        
+        // Documentation & Utilities
+        "bierner.markdown-mermaid",
+        "yzhang.markdown-all-in-one",
+        "mikestead.dotenv",
+        "streetsidesoftware.code-spell-checker"
+      ]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+# RabbitMQ 4.2 - Docker Compose Service
+# Uncomment in devcontainer.json: "../compose/rabbitmq.compose.yml"
+
+services:
+  rabbitmq:
+    image: rabbitmq:4.2-management-alpine
+    restart: unless-stopped
+    
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: password
+    
+    ports:
+      - "15672:5672"    # AMQP protocol - +10000 offset avoids conflicts
+      - "25672:15672"   # Management UI - +10000 offset avoids conflicts
+    
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  rabbitmq-data:

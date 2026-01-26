@@ -1,0 +1,30 @@
+# MongoDB 8 - Docker Compose Service
+# Uncomment in devcontainer.json: "../compose/mongo.compose.yml"
+
+services:
+  mongo:
+    image: mongo:8.2
+    restart: unless-stopped
+    
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: devdb
+    
+    ports:
+      - "37017:27017"  # Host:Container - 27017+10000=37017 avoids conflicts
+    
+    volumes:
+      - mongo-data:/data/db
+      - mongo-config:/data/configdb
+    
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 20s
+
+volumes:
+  mongo-data:
+  mongo-config:

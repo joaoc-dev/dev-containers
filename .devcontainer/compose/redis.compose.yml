@@ -1,0 +1,25 @@
+# Redis 8 - Docker Compose Service
+# Uncomment in devcontainer.json: "../compose/redis.compose.yml"
+
+services:
+  redis:
+    image: redis:8-alpine
+    restart: unless-stopped
+    
+    command: redis-server --appendonly yes --requirepass redispassword
+    
+    ports:
+      - "16379:6379"  # Host:Container - +10000 offset avoids conflicts
+    
+    volumes:
+      - redis-data:/data
+    
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  redis-data:
