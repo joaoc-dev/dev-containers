@@ -1,0 +1,65 @@
+{
+  "name": "React + Python Fullstack",
+  
+  // Using docker-compose for dev container + optional databases
+  "dockerComposeFile": [
+    "docker-compose.yml"
+    // Uncomment to add services (see .devcontainer/compose/README.md):
+    // ,"../compose/sqlserver.compose.yml"
+    // ,"../compose/postgres.compose.yml"
+    // ,"../compose/mongo.compose.yml"
+    // ,"../compose/redis.compose.yml"
+    // ,"../compose/rabbitmq.compose.yml"
+  ],
+  "service": "devcontainer",
+  "workspaceFolder": "/workspace",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "22"
+    },
+    "ghcr.io/devcontainers-extra/features/pnpm:2": {
+      "version": "10.28.0"
+    },
+    "ghcr.io/devcontainers-extra/features/poetry:2": {
+      "version": "2.2.1"
+    },
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "moby": false,
+      "dockerDashComposeVersion": "v2"
+    },
+    "ghcr.io/audacioustux/devcontainers/tilt:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // JavaScript/TypeScript
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-next",
+        "yoavbls.pretty-ts-errors",
+        
+        // React/Frontend
+        "bradlc.vscode-tailwindcss",
+        "dsznajder.es7-react-js-snippets",
+        "pranaygp.vscode-css-peek",
+        "vincaslt.highlight-matching-tag",
+        "jock.svg",
+        
+        // Python
+        "ms-python.python",
+        "ms-python.debugpy",
+        "anysphere.cursorpyright",
+        
+        // Docker
+        "ms-azuretools.vscode-docker",
+        
+        // Documentation & Utilities
+        "bierner.markdown-mermaid",
+        "yzhang.markdown-all-in-one",
+        "mikestead.dotenv",
+        "streetsidesoftware.code-spell-checker"
+      ]
+    }
+  }
+}
