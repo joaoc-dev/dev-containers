@@ -19,6 +19,7 @@
       "version": "10.28.0"
     }
   },
+  "postCreateCommand": "npm install -g commitizen cz-conventional-changelog && echo '{\"path\":\"cz-conventional-changelog\"}' > ~/.czrc",
   "customizations": {
     "vscode": {
       "extensions": [

@@ -15,11 +15,15 @@
   "workspaceFolder": "/workspace",
   
   "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "22"
+    },
     "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
       "moby": false,
       "dockerDashComposeVersion": "v2"
     }
   },
+  "postCreateCommand": "npm install -g commitizen cz-conventional-changelog && echo '{\"path\":\"cz-conventional-changelog\"}' > ~/.czrc",
   "customizations": {
     "vscode": {
       "extensions": [
