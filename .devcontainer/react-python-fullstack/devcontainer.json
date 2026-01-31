@@ -15,6 +15,18 @@
   "workspaceFolder": "/workspace",
   
   "features": {
+     // Terminal (optional): Zsh + Oh My Zsh + autosuggestions
+     "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": false,
+      "installOhMyZsh": true,
+      "installOhMyZshConfig": true,
+      "username": "none"
+    },
+    "ghcr.io/devcontainers-extra/features/zsh-plugins:0": {
+      "plugins": "zsh-autosuggestions",
+      "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions"
+    },
     "ghcr.io/devcontainers/features/node:1": {
       "version": "22"
     },
@@ -30,9 +42,14 @@
     },
     "ghcr.io/audacioustux/devcontainers/tilt:1": {}
   },
-  "postCreateCommand": "npm install -g commitizen cz-conventional-changelog && echo '{\"path\":\"cz-conventional-changelog\"}' > ~/.czrc",
+  "postCreateCommand": "npm install -g commitizen cz-conventional-changelog; echo '{\"path\":\"cz-conventional-changelog\"}' > ~/.czrc",
+  // Terminal theme (optional): Oh My Zsh theme (comment out to disable)
+  "postStartCommand": "set -e; if [ -f \"$HOME/.zshrc\" ]; then if grep -q '^ZSH_THEME=' \"$HOME/.zshrc\"; then sed -i 's/^ZSH_THEME=.*/ZSH_THEME=\"agnoster\"/' \"$HOME/.zshrc\"; else printf '\\nZSH_THEME=\"agnoster\"\\n' >> \"$HOME/.zshrc\"; fi; fi",
   "customizations": {
     "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      },
       "extensions": [
         // JavaScript/TypeScript
         "dbaeumer.vscode-eslint",

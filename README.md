@@ -35,6 +35,15 @@ The adapter is configured globally inside the container via `~/.czrc` so you can
 
 > Note: `cz-conventional-changelog` is a Commitizen adapter (prompt format). It does not itself generate a `CHANGELOG.md` file.
 
+## Terminal (Zsh)
+
+The templates include an **optional** Zsh terminal setup:
+- Zsh + Oh My Zsh (via the official `common-utils` feature)
+- `zsh-autosuggestions` (via the `zsh-plugins` feature)
+- Oh My Zsh theme set to **`agnoster`**
+
+To disable it, comment out the Zsh-related feature entries and the theme line in each template’s `devcontainer.json`.
+
 ### Docker Setup
 
 These containers use **docker-outside-of-docker** - it mounts your host Docker socket instead of running a nested Docker daemon.
